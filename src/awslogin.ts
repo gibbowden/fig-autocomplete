@@ -6,7 +6,6 @@ const awsloginGenerators: Record<"databases" | "roles", Fig.Generator> = {
         return [];
       }
       const databases = findListFromOutput(output, "Available databases:");
-      console.log({ databases });
       return databases.map((database) => {
         return {
           name: database.trim(),
@@ -70,5 +69,8 @@ function findListFromOutput(output: string, startOfListIndicator: string) {
   const startOfListIndex =
     outputLines.findIndex((line) => line.startsWith(startOfListIndicator)) + 1;
   const endOfListIndex = outputLines.indexOf("", startOfListIndex);
-  return outputLines.slice(startOfListIndex, endOfListIndex);
+  return outputLines.slice(
+    startOfListIndex,
+    endOfListIndex === -1 ? undefined : endOfListIndex
+  );
 }
