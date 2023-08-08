@@ -86,6 +86,9 @@ const completionSpec: Fig.Spec = {
           {
             name: "false",
           },
+          {
+            name: "something else",
+          },
         ],
       },
     },
