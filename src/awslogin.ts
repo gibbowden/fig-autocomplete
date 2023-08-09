@@ -35,7 +35,7 @@ const completionSpec: Fig.Spec = {
   options: [
     {
       name: "--db-login",
-      displayName: "--db-login=<database>",
+      exclusiveOn: ["--db"],
       requiresSeparator: true,
       description: "Log into a MySQL prompt",
       icon: "💽",
@@ -46,7 +46,7 @@ const completionSpec: Fig.Spec = {
     },
     {
       name: "--db",
-      displayName: "--db=<database>",
+      exclusiveOn: ["--db-login"],
       requiresSeparator: true,
       description: "Return a MySQL login command",
       icon: "💽",
@@ -58,6 +58,7 @@ const completionSpec: Fig.Spec = {
     {
       name: ["--help", "-h"],
       description: "Return a MySQL login command",
+      priority: 1,
     },
   ],
 };
